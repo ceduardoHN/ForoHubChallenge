@@ -18,6 +18,12 @@ Como requisito para este proyecto se necesitarón las siguientes herramientas:
 - Postman API Platform
     - Para probar los endpoints existentes en la API del sistema.
     - [Postman](https://www.postman.com/)
+- Flyway
+    - Dependencia para manejo de código sql versionado.
+    - [Flyway](https://www.baeldung.com/database-migrations-with-flyway)
+- MySQL Community 8.0
+    - Como gestor de base de datos.
+    - [MySQL](https://www.baeldung.com/database-migrations-with-flyway)
 
 ## Demostración del Sistema
 Se recomienda ver el siguiente video para comprender mejor la explicación posterior.<br>
