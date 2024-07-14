@@ -20,7 +20,7 @@ public class Course implements Serializable {
      * @param courseName
      * @param category
      */
-    public Course(int idCourse, String courseName, Category category) {
+    public Course(long idCourse, String courseName, Category category) {
         this.idCourse = idCourse;
         this.courseName = courseName;
         this.category = category;
@@ -29,7 +29,7 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcourse")
-    private int idCourse;
+    private long idCourse;
 
     @Column(name = "coursename")
     private String courseName;
@@ -41,11 +41,11 @@ public class Course implements Serializable {
     @JsonIgnoreProperties("idCourse")
     private List<Topic> topics;
 
-    public int getIdCourse() {
+    public long getIdCourse() {
         return idCourse;
     }
 
-    public void setIdCourse(int idCourse) {
+    public void setIdCourse(long idCourse) {
         this.idCourse = idCourse;
     }
 

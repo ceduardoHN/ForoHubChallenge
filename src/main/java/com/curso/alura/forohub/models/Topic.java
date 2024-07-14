@@ -24,7 +24,7 @@ public class Topic implements Serializable {
      * @param idUser
      * @param idCourse
      */
-    public Topic(int idTopic, String title, String message, Timestamp generationDate,
+    public Topic(long idTopic, String title, String message, Timestamp generationDate,
                  Status status, User idUser, Course idCourse) {
         this.idTopic = idTopic;
         this.title = title;
@@ -38,7 +38,7 @@ public class Topic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtopic")
-    private int idTopic;
+    private long idTopic;
 
     private String title;
     private String message;
@@ -59,11 +59,11 @@ public class Topic implements Serializable {
     @JsonIncludeProperties({"idCourse", "courseName", "category"})
     private Course idCourse;
 
-    public int getIdTopic() {
+    public long getIdTopic() {
         return idTopic;
     }
 
-    public void setIdTopic(int idTopic) {
+    public void setIdTopic(long idTopic) {
         this.idTopic = idTopic;
     }
 

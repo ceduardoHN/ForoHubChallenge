@@ -20,7 +20,7 @@ public class User implements Serializable {
      * @param email
      * @param password
      */
-    public User(int idUser, String userName, String email, String password) {
+    public User(long idUser, String userName, String email, String password) {
         this.idUser = idUser;
         this.userName = userName;
         this.email = email;
@@ -30,7 +30,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser")
-    private int idUser;
+    private long idUser;
 
     @Column(name = "username")
     private String userName;
@@ -43,11 +43,11 @@ public class User implements Serializable {
     @JsonIgnoreProperties("idUser")
     private List<Topic> topics;
 
-    public int getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
