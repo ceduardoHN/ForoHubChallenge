@@ -99,6 +99,50 @@ public class TopicController {
         return new ResponseEntity<>("{\"message\": \"Datos guardados correctamente.\"}", HttpStatus.OK);
     }
 
+    @PutMapping("/{idTopic}")
+    public ResponseEntity<String> updateTopic(
+            @RequestBody @Valid SaveTopicDTO topicDTO,
+            @PathVariable long idTopic
+    ){
+        if(this.topicService.verifyTopicById(idTopic)){
+            User user = this.userService.getUserById(topicDTO.idUser());
+            Course course = this.courseService.getCourseById(topicDTO.idCourse());
+            Timestamp modificationDate = Timestamp.from(Instant.now());
+
+            if(user==null){
+                return new ResponseEntity<>("{\"message\": \"El usuario no existe.\"}", HttpStatus.NOT_FOUND);
+            }
+
+            if(course==null){
+                return new ResponseEntity<>("{\"message\": \"El curso no existe.\"}", HttpStatus.NOT_FOUND);
+            }
+
+            if(
+                this.topicService.verifyTopicByTitle(topicDTO.title()) ||
+                this.topicService.verifyTopicByMessage(topicDTO.message())
+            )
+            {
+                return new ResponseEntity<>(
+                        "{\"message\": \"No se permiten tópicos duplicados.\n\"}",
+                        HttpStatus.BAD_REQUEST);
+            }
+
+
+            Topic topic = this.topicService.getTopicById(idTopic);
+            topic.setTitle(topicDTO.title());
+            topic.setMessage(topicDTO.message());
+            topic.setGenerationDate(modificationDate);
+            topic.setIdUser(user);
+            topic.setIdCourse(course);
+
+            this.topicService.saveTopic(topic);
+
+            return new ResponseEntity<>("{\"message\": \"Datos modificados correctamente.\"}", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
     @DeleteMapping("/{idTopic}")
     public ResponseEntity deleteTopicById(@PathVariable long idTopic){
         if(this.topicService.verifyTopicById(idTopic)){
