@@ -3,6 +3,8 @@ package com.curso.alura.forohub.services;
 import com.curso.alura.forohub.models.Topic;
 import com.curso.alura.forohub.repositories.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,6 +18,10 @@ public class TopicService {
 
     public List<Topic> getAllTopics(){
         return this.topicRepository.findAll();
+    }
+
+    public Page<Topic> getAllTopics(Pageable pagination){
+        return this.topicRepository.findAll(pagination);
     }
 
     public Topic getTopicById(long idTopic){

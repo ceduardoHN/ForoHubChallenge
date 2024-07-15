@@ -10,6 +10,9 @@ import com.curso.alura.forohub.services.TopicService;
 import com.curso.alura.forohub.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +38,11 @@ public class TopicController {
     @GetMapping
     public List<Topic> getAllTopics(){
         return this.topicService.getAllTopics();
+    }
+
+    @GetMapping("/paginated")
+    public Page<Topic> getAllTopics(@PageableDefault(size = 15) Pageable pagination){
+        return this.topicService.getAllTopics(pagination);
     }
 
     @GetMapping("/{idTopic}")
@@ -68,8 +76,8 @@ public class TopicController {
         )
         {
             return new ResponseEntity<>(
-                    "{\"message\": \"No se permiten topicos duplicados.\n\"}",
-                    HttpStatus.NOT_FOUND);
+                    "{\"message\": \"No se permiten tópicos duplicados.\n\"}",
+                    HttpStatus.BAD_REQUEST);
         }
 
         Topic topic = new Topic();
@@ -83,7 +91,7 @@ public class TopicController {
 
         this.topicService.saveTopic(topic);
 
-        return new ResponseEntity<>("{\"message\": \"Datos guardados correctamente\"}", HttpStatus.OK);
+        return new ResponseEntity<>("{\"message\": \"Datos guardados correctamente.\"}", HttpStatus.OK);
     }
 
     @DeleteMapping("/{idTopic}")
