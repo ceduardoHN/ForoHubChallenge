@@ -62,6 +62,16 @@ public class TopicController {
             return new ResponseEntity<>("{\"message\": \"El curso no existe.\"}", HttpStatus.NOT_FOUND);
         }
 
+        if(
+            this.topicService.verifyTopicByTitle(topicDTO.title()) ||
+            this.topicService.verifyTopicByMessage(topicDTO.message())
+        )
+        {
+            return new ResponseEntity<>(
+                    "{\"message\": \"No se permiten topicos duplicados.\n\"}",
+                    HttpStatus.NOT_FOUND);
+        }
+
         Topic topic = new Topic();
         topic.setIdTopic(0);
         topic.setTitle(topicDTO.title());
@@ -74,6 +84,17 @@ public class TopicController {
         this.topicService.saveTopic(topic);
 
         return new ResponseEntity<>("{\"message\": \"Datos guardados correctamente\"}", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{idTopic}")
+    public ResponseEntity deleteTopicById(@PathVariable long idTopic){
+        if(this.topicService.verifyTopicById(idTopic)){
+            this.topicService.deleteTopicById(idTopic);
+
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
 }

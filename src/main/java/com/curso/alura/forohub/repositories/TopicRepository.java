@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TopicRepository extends JpaRepository<Topic, Long> {
+    boolean existsByTitle(String title);
+    boolean existsByMessage(String message);
+    boolean existsByIdTopic(long idTopic);
 }
