@@ -40,6 +40,10 @@ public class TopicService {
         return this.topicRepository.existsByIdTopic(idTopic);
     }
 
+    public List<Topic> getTop10TopicsByGenerationDate(){
+        return this.topicRepository.findTop10ByOrderByGenerationDateAsc();
+    }
+
     public Topic saveTopic(Topic topic){
         return this.topicRepository.save(topic);
     }

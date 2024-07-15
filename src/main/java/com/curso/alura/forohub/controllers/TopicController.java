@@ -56,6 +56,11 @@ public class TopicController {
         return new ResponseEntity<>(topic, HttpStatus.OK);
     }
 
+    @GetMapping("/top10")
+    public List<Topic> getTop10TopicsByGenDate(){
+        return this.topicService.getTop10TopicsByGenerationDate();
+    }
+
     @PostMapping
     public ResponseEntity<String> saveTopic(@RequestBody @Valid SaveTopicDTO topicDTO){
         User user = this.userService.getUserById(topicDTO.idUser());
