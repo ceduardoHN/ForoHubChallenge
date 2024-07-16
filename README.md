@@ -66,7 +66,7 @@ Se recomienda ver el siguiente video para comprender mejor la explicación poste
 
 
 ## Datos Relevantes
-[Alura Badge]()
+[Alura Badge](https://drive.google.com/file/d/1EeMWFStNPm6-Fg-xHtuuzRD_u_KVbQzv/view?usp=sharing)
 <br>
 <b>Autor: Eduardo Soriano</b>. <br>
 Perfil de Github: [ceduardoHN](https://github.com/ceduardoHN/) <br>
