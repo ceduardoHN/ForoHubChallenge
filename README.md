@@ -16,7 +16,7 @@ lorem impsum
 
 
 ## Requisitos del Sistema
-Como requisito para este proyecto se necesitarón las siguientes herramientas:
+Como requisito para este proyecto se necesitarón las siguientes herramientas más destacadas:
 - IntelliJ IDEA Community Edition
     - Como entorno de desarrollo.
     - [Jetbrains](https://www.jetbrains.com/idea/)
@@ -30,6 +30,9 @@ Como requisito para este proyecto se necesitarón las siguientes herramientas:
     - Como servicio y gestor de base de datos.
     - [MySQL](https://www.mysql.com/)
     - [MySQL Workbench](https://www.mysql.com/products/workbench/)
+- Spring Security
+    - Para el manejo de autenticación y autorización de usuarios y peticiones a la API, respectivamente.
+    - [Spring Security](https://spring.io/projects/spring-security)
 
 ## Demostración del Sistema
 Se recomienda ver el siguiente video para comprender mejor la explicación posterior.<br>
