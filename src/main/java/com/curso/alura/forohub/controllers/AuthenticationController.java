@@ -1,6 +1,7 @@
 package com.curso.alura.forohub.controllers;
 
 import com.curso.alura.forohub.dtos.AuthUserDTO;
+import com.curso.alura.forohub.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity authUser(@RequestBody @Valid AuthUserDTO userDTO){
         Authentication authenticationToken = new UsernamePasswordAuthenticationToken(
@@ -25,7 +29,8 @@ public class AuthenticationController {
         );
 
         authenticationManager.authenticate(authenticationToken);
+        String jwt = this.tokenService.generarTokenPrueba();
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(jwt);
     }
 }

@@ -33,6 +33,9 @@ Como requisito para este proyecto se necesitar처n las siguientes herramientas m�
 - Spring Security
     - Para el manejo de autenticaci처n y autorizaci처n de usuarios y peticiones a la API, respectivamente.
     - [Spring Security](https://spring.io/projects/spring-security)
+- Auth0 java-jwt
+    - Para la generaci처n y validaci처n de tokens en los endpoints de la API.
+    - [Auth0](https://github.com/auth0/java-jwt)
 
 ## Demostraci처n del Sistema
 Se recomienda ver el siguiente video para comprender mejor la explicaci처n posterior.<br>
