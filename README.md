@@ -8,7 +8,7 @@
 - [Datos Relevantes](#datos-relevantes)
 
 ## Descripción del Challenge
-API que proporciona endpoints para un foro donde todos los participantes de una plataforma pueden plantear sus preguntas sobre determinados tópicos. En este proyecto se utilizan algunas funcionalidades como solicitudes HTTP, manejo y manipulación de objetos de tipo json, modelado y persistencia de datos por medio de [Java Persistence API (JPA)](https://spring.io/projects/spring-data-jpa), junto con la metodología de actualizaciones del modelo de base de datos ([DDL y DML](https://www.ibm.com/docs/es/idr/11.3.3?topic=console-replicating-data-definition-language-ddl-changes)) por medio de migraciones realizadas desde el proyecto de backend, lo cual es utilizado en la actualidad para que el equipo correspondiente se enfoque completamente en las reglas del negocio y los servicios que debe proporcionar la API; además se implementan técnicas de autorización, autenticacion y control de usuarios y peticiones respectivamente, por medio de [Json Web Token (JWT)](https://jwt.io/).
+Interfaz de Programación de Aplicaciones (API por sus siglás en inglés) que proporciona endpoints para un foro donde todos los participantes de una plataforma pueden plantear sus preguntas sobre determinados tópicos. En este proyecto se utilizan algunas funcionalidades como solicitudes HTTP, manejo y manipulación de objetos de tipo json, modelado y persistencia de datos por medio de [Java Persistence API (JPA)](https://spring.io/projects/spring-data-jpa), junto con la metodología de actualizaciones del modelo de base de datos ([DDL y DML](https://www.ibm.com/docs/es/idr/11.3.3?topic=console-replicating-data-definition-language-ddl-changes)) por medio de migraciones realizadas desde el proyecto de backend, lo cual es utilizado en la actualidad para que el equipo correspondiente se enfoque completamente en las reglas del negocio y los servicios que debe proporcionar la API; además se implementan técnicas de autorización, autenticacion y control de usuarios y peticiones respectivamente, por medio de [Json Web Token (JWT)](https://jwt.io/). Y por último se proporciona una interfaz de usuario sencilla, brindando una manera más amigable de explorar, entender y analizar los endpoints (peticiones y respuestas) que la API tiene a su disposición, con la ayuda de [SpringDoc-OpenAPI](https://springdoc.org/).
 
 ### Documentación de la API<br> 
 - Cuenta con los endpoints siguientes:
@@ -29,7 +29,10 @@ API que proporciona endpoints para un foro donde todos los participantes de una 
     - /login
         - Métodos soportados:
                 - Inicio de sesión de usuarios en la API.
-- Para ver información mas detallada ingrese al siguiente link: [ForoHubOpenAPI]()
+- Para ver información más detallada sobre la API se brindan los siguientes links: 
+    - [Documentación](http://localhost:8080/v3/api-docs)
+    - [Interfaz de Usuario](http://localhost:8080/swagger-ui/index.html)
+- <b>*Nota Importante. Los enlaces anteriores solo funcionan mientras el servidor está en ejecución.</b>
 
 ## Requisitos del Sistema
 Como requisito para este proyecto se necesitarón las siguientes herramientas más destacadas:
@@ -50,14 +53,17 @@ Como requisito para este proyecto se necesitarón las siguientes herramientas m�
     - Para el manejo de autenticación y autorización de usuarios y peticiones a la API, respectivamente.
     - [Spring Security](https://spring.io/projects/spring-security)
 - Auth0 java-jwt
-    - Para la generación y validación de tokens en los endpoints de la API.
+    - Se encarga de la generación y validación de tokens en los endpoints de la API.
     - [Auth0](https://github.com/auth0/java-jwt)
+- SpringDoc OpenAPI
+    - Proporciona una interfaz de usuario simple de los endpoints de la API, ademas de información relevante sobre especificaciones técnicas (tipos de dato en peticiones y respuestas, nomenclatura de URLs, entre otras).
+    - [SpringDoc-OpenAPI](https://springdoc.org/)
 
 ## Demostración del Sistema
 Se recomienda ver el siguiente video para comprender mejor la explicación posterior.<br>
 [![Enlace del video](https://img.youtube.com/vi/75LaX6N_Kx4/maxresdefault.jpg)](https://youtu.be/75LaX6N_Kx4)
 
-### 1. El sistema cumple con reglas de negocio específicas.<br> 
+### 1. El sistema cumple con algunas reglas de negocio.<br> 
 - Para el guardado y actualizado de tópicos:
     - Solo los datos título, mensaje, autor y curso deben ser enviados en el cuerpo de la solicitud.
     - Todos los campos son obligatorios, por lo tanto, es necesario verificar si todos los campos se están ingresando correctamente.
